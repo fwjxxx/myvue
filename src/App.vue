@@ -19,7 +19,7 @@
 <script>
 import header from 'components/header/header';
 
-const ERR_OK = 0;
+// const ERR_OK = 0;
 
 export default {
   data() {
@@ -28,12 +28,13 @@ export default {
     };
   },
   created() {
-    this.$http.get('/api/seller').then((response) => {
+    this.$http.get('/api/goods').then((response) => {
       response = response.body;
-      if (response.errno === ERR_OK) {
-        this.seller = response.data;
-        console.log(this.seller);
-      }
+      console.log(response);
+      // if (response.errno === ERR_OK) {
+      //   this.seller = response.data;
+      //   console.log(this.seller);
+      // }
     });
   },
   components: {
