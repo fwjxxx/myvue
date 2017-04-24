@@ -30,7 +30,7 @@ export default {
   created() {
     this.$http.get('/api/goods').then((response) => {
       response = response.body;
-      console.log(response);
+      console.log(response.count);
       // if (response.errno === ERR_OK) {
       //   this.seller = response.data;
       //   console.log(this.seller);
