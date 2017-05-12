@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-header></v-header>
+    <v-header :seller="seller"></v-header>
     <div class="tab border-1px">
       <div class="tab-item">
         <router-link to="/goods">商品</router-link>
@@ -28,12 +28,12 @@ export default {
     };
   },
   created() {
-    this.$http.get('/api/goods').then((response) => {
+    this.$http.get('/api/seller').then((response) => {
       response = response.body;
       // console.log(response.count);
       if (response.errno === ERR_OK) {
         this.seller = response.data;
-        console.log(this.seller);
+        // console.log(this.seller);
       }
     });
   },
@@ -61,5 +61,5 @@ export default {
         color: rgb(77, 85, 93)
         &.active
           color: rgb(240, 20, 20)
-
+          
 </style>
