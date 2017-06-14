@@ -14,6 +14,13 @@
             <div class="content-right">
                 <div class="pay" :class="payClass">{{payDesc}}</div>
             </div>
+            <div class="ball-container">
+                    <div v-for="ball in balls" v-show="ball.show" class="ball">
+                <transition name="drop">
+                        <div class="inner"></div>
+                </transition>
+                    </div>
+            </div>
         </div>
     </div>
 </template>
@@ -40,6 +47,27 @@
                 type: Number,
                 default: 0
             }
+        },
+        data() {
+            return {
+                balls: [
+                    {
+                        show: false
+                    },
+                    {
+                        show: false
+                    },
+                    {
+                        show: false
+                    },
+                    {
+                        show: false
+                    },
+                    {
+                        show: false
+                    }
+                ]
+            };
         },
         computed: {
             totalPrice() {
@@ -72,6 +100,11 @@
                 } else {
                     return 'enough';
                 }
+            }
+        },
+        methods: {
+            drop(el) {
+                console.log(el);
             }
         }
     };
@@ -166,5 +199,18 @@
                     &.enough
                         background: #00b43c
                         color: #fff
-
+        .ball-container
+            .ball
+                position: fixed
+                left: 32px
+                bottom: 22px
+                z-index: 200
+                &.drop-enter-active,&.drop-leave-active 
+                    transition: all 0.4s
+                    .inner
+                        width: 16px
+                        height: 16px
+                        border-radius: 50%
+                        background: rgb(0, 160, 220)
+                        transition: all 0.4s
 </style>
