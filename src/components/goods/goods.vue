@@ -37,7 +37,7 @@
                 </li>
             </ul>
         </div>
-        <shopcart ref="shopcart" :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+        <shopcart v-on:cart-add="dropTarget" ref="shopcart" :select-foods="selectFoods" :delivery-price="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
     </div>
 </template>
 
@@ -108,7 +108,8 @@
                 this.foodScroll.scrollToElement(el, 300);
                 console.log(index);
             },
-            _drop(target) {
+            dropTarget(target) {
+                console.log(target);
                 this.$refs.shopcart.drop(target);
             },
             _initScroll() {
@@ -139,11 +140,6 @@
         components: {
             shopcart,
             cartcontrol
-        },
-        events: {
-            'cart.add'(target) {
-                this._drop(target);
-            }
         }
     };
 </script>

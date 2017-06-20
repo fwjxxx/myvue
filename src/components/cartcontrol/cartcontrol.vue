@@ -32,7 +32,8 @@
                 } else {
                     this.food.count++;
                 }
-                this.$children('cart.add', event.target);
+                console.log(1);
+                this.$emit('cart-add', event.target);
             },
             decreaseCart() {
                 if (!event._constructed) {

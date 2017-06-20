@@ -16,9 +16,9 @@
             </div>
             <div class="ball-container">
                     <div v-for="ball in balls" v-show="ball.show" class="ball">
-                <transition name="drop">
-                        <div class="inner"></div>
-                </transition>
+                        <transition name="drop">
+                            <div class="inner"></div>
+                        </transition>
                     </div>
             </div>
         </div>
